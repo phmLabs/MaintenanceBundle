@@ -1,0 +1,9 @@
+{
+  "name": "phmlabs/maintenancebundle",
+  "description": "include multiple twig templates at once",
+  "autoload": {
+    "psr-4": {
+      "phmLabs\\MaintenanceBundle\\": "src/"
+    }
+  }
+}
