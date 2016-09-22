@@ -25,11 +25,13 @@ class MaintenanceCommand extends ContainerAwareCommand
         $appFile = $webDir . 'app.php';
 
         if ($input->getArgument('action') == 'start') {
+            $output->writeln('<info>Starting maintenance mode ... </info>');
             $content = $this->getContainer()->get('templating')->render('phmLabsMaintenanceBundle:Default:index.html.twig');
             rename($appFile, $webDir . self::MAINTENANCE_FILE);
             file_put_contents($appFile, $content);
         } elseif ($input->getArgument('action') == 'stop') {
             if (file_exists($webDir . self::MAINTENANCE_FILE)) {
+                $output->writeln('<info>Stopping maintenance mode ... </info>');
                 unlink($appFile);
                 rename($webDir . self::MAINTENANCE_FILE, $appFile);
             }
